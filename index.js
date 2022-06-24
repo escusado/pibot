@@ -5,9 +5,11 @@ var motorHat = require('motor-hat')({
     dcs: ['M1', 'M2', 'M3', 'M4'],
 }).init();
 
-motorHat.dcs[0].runSync('fwd');
-// Set DC motor speed to 50%
 motorHat.dcs[0].setSpeedSync(50);
+motorHat.dcs[0].runSync('fwd');
+await sleep(1000);
+
+// Set DC motor speed to 50%
 // reverse the dc motor to back direction
 motorHat.dcs[0].runSync('back');
 // stop the dc motor
