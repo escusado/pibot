@@ -1,9 +1,10 @@
 console.log('🤖🍓');
 
 var motorHat = require('motor-hat')({
-    address: 0x60,
+    address: 0x70,
     dcs: ['M1', 'M2', 'M3', 'M4'],
 }).init();
+
 motorHat.dcs[0].runSync('fwd');
 // Set DC motor speed to 50%
 motorHat.dcs[0].setSpeedSync(50);
