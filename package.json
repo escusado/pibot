@@ -4,5 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "motor-hat": "^2.0.10"
   }
 }
