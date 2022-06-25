@@ -27,12 +27,21 @@ process.stdin.on('data', function (key) {
 });
 
 function stop() {
-    motorHat.dcs.stopSync();
+    motorHat.dcs[0].stopSync();
+    motorHat.dcs[1].stopSync();
+    motorHat.dcs[2].stopSync();
+    motorHat.dcs[3].stopSync();
 }
 
 function forward() {
-    motorHat.dcs.setSpeedSync(50);
-    motorHat.dcs.runSync('fwd');
+    motorHat.dcs[0].setSpeedSync(50);
+    motorHat.dcs[1].setSpeedSync(50);
+    motorHat.dcs[2].setSpeedSync(50);
+    motorHat.dcs[3].setSpeedSync(50);
+    motorHat.dcs[0].runSync('fwd');
+    motorHat.dcs[1].runSync('fwd');
+    motorHat.dcs[2].runSync('fwd');
+    motorHat.dcs[3].runSync('fwd');
 };
 
 function reverse() {
