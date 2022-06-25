@@ -9,12 +9,9 @@ process.stdin.setRawMode(true);
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', function (key) {
-
     if (key === '\u0003') {
         process.exit();
     }
-
-    console.log('🚀', key);
 
     switch (key) {
         case 's': stop(); break;
@@ -27,6 +24,7 @@ process.stdin.on('data', function (key) {
 });
 
 function stop() {
+    console.log('🔴');
     motorHat.dcs[0].stopSync();
     motorHat.dcs[1].stopSync();
     motorHat.dcs[2].stopSync();
@@ -34,6 +32,7 @@ function stop() {
 }
 
 function forward() {
+    console.log('🥦');
     motorHat.dcs[0].setSpeedSync(50);
     motorHat.dcs[1].setSpeedSync(50);
     motorHat.dcs[2].setSpeedSync(50);
