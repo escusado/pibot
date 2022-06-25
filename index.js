@@ -56,17 +56,17 @@ function forward() {
     motorHat.dcs[3].runSync('fwd');
 };
 
+const count = 0
 function reverse() {
     oled.clearDisplay();
-    oled.writeString(font, 1, 'Todo el mundo haciendo el paso del robot.', 1, true);
+    oled.writeString(font, 1, `el paso del robot ${count}`, 1, true);
+    count++;
 };
 
 function left() {
-    oled.clearDisplay();
-    oled.writeString(font, 1, 'Todo el mundo haciendo el paso del robot. \n - \nTodo el mundo haciendo el paso del robot.', 1, true);
+
 };
 
 function right() {
-    motorHat.dcs.setSpeedSync(50);
-    motorHat.dcs.runSync('fwd');
+
 };
