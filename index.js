@@ -16,13 +16,12 @@ var opts = {
 };
 
 var oled = new oled(i2cBus, opts);
-oled.clearDisplay();
 
 var font = require('oled-font-5x7');
 
 // sets cursor to x = 1, y = 1
 oled.setCursor(1, 1);
-oled.writeString(font, 1, 'Cats and dogs are really cool animals, you know.', 1, true);
+
 
 
 process.stdin.setRawMode(true);
@@ -64,13 +63,13 @@ function forward() {
 };
 
 function reverse() {
-    motorHat.dcs.setSpeedSync(50);
-    motorHat.dcs.runSync('back');
+    oled.clearDisplay();
+    oled.writeString(font, 1, 'Todo el mundo haciendo el paso del robot.', 1, true);
 };
 
 function left() {
-    motorHat.dcs.setSpeedSync(50);
-    motorHat.dcs.runSync('fwd');
+    oled.clearDisplay();
+    oled.writeString(font, 1, 'Todo el mundo haciendo el paso del robot. \n - \nTodo el mundo haciendo el paso del robot.', 1, true);
 };
 
 function right() {
