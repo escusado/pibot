@@ -56,7 +56,7 @@ function forward() {
     motorHat.dcs[3].runSync('fwd');
 };
 
-const count = 0
+let count = 0;
 function reverse() {
     oled.clearDisplay();
     oled.writeString(font, 1, `el paso del robot ${count}`, 1, true);
