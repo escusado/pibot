@@ -6,6 +6,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "motor-hat": "^2.0.10"
+    "motor-hat": "^2.0.10",
+    "oled-font-5x7": "^1.0.3",
+    "oled-i2c-bus": "^1.0.12"
   }
 }
