@@ -1,28 +1,22 @@
 console.log('🤖🍓');
 
+var font = require('oled-font-5x7');
+var i2c = require('i2c-bus'),
+    i2cBus = i2c.openSync(1),
+    oled = require('oled-i2c-bus');
+
 var motorHat = require('motor-hat')({
     address: 0x70,
     dcs: ['M1', 'M2', 'M3', 'M4'],
 }).init();
 
-var i2c = require('i2c-bus'),
-    i2cBus = i2c.openSync(1),
-    oled = require('oled-i2c-bus');
-
-var opts = {
+var oled = new oled(i2cBus, {
     width: 128,
     height: 32,
     address: 0x3c
-};
-
-var oled = new oled(i2cBus, opts);
-
-var font = require('oled-font-5x7');
-
-// sets cursor to x = 1, y = 1
+});
+oled.clearDisplay();
 oled.setCursor(1, 1);
-
-
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
