@@ -14,6 +14,14 @@ child.stdout.on("data", (data) => {
         x: parseInt(axesSliced[0].split(":")[1]),
         y: parseInt(axesSliced[1].split(":")[1]) * -1,
       },
+      joyr: {
+        x: parseInt(axesSliced[3].split(":")[1]),
+        y: parseInt(axesSliced[4].split(":")[1]) * -1,
+      },
+      dpad: {
+        x: parseInt(axesSliced[6].split(":")[1]),
+        y: parseInt(axesSliced[7].split(":")[1]) * -1,
+      },
     };
     console.log("axes✚", axisParsed);
 
