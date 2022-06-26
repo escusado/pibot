@@ -15,7 +15,7 @@ child.stdout.on('data', (data) => {
         console.log('axes✚', axesString[0]);
 
         const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
-        console.log('buttons🔴', buttonsString);
+        console.log('buttons🔴', buttonsString[0]);
     }
 });
 
