@@ -1,1 +1,95 @@
 # pibot
+
+- Abstract
+  - Puppet mode using Dualsense
+  - A depth of field capable rover can scan a house interior
+    - rover
+      - how to control a movable vehicle using code?
+      - what counts as a robot?
+      - code control
+        - debug/dummy control
+        - remote control
+          - gamepad
+        - autonomy
+          - slam using depth of field
+  - BOM
+    - sourcing from mexico
+  - Key blackboxes
+    - drive motors using motor hat
+    - drive oled screen using stemmaqt
+    - read gamepad
+      - more difficult than I thought, had to create custom parser using jstest
+  - Features
+    - Dual controllers
+      - rover
+      - camera
+    - Depth of field
+      - intellisense?
+    - Oled display
+      - emotion
+        - eyes
+        - articulated?
+          - 2 servo control
+      - debug
+        - ip
+        - wifi setup
+        - gamepad
+        - ram
+  - Architecture ideas
+    - Robotics are about orchestrating a symphony of async messages
+    - State based tree
+    - use elf to keep track of input/sensors
+    - main app builds component tree
+      - each component has a state
+        - gamepad.state.axes.joyr.x
+        - rover.update({target_vector: angle, magnitude})
+      - The Loop
+- Hardware
+  - pi
+    - install os 64
+      - ssh
+      - wifi
+      - ctrl-x
+      - user
+    - ssh into pi
+    - update
+    - upgrade
+    - `raspi-config`
+      - i2c
+      - partition size
+      - terminal autologin
+  - oled
+    - cable mod
+    - pi io pins
+    - stemmaqt, quick
+  - MotorHat
+    - M1-4 all DC motors direct connection
+  - Power
+    - 12v input for motor
+    - 5v regulator for pi
+    - solder to io pads
+    - Dev mode usb power cable
+- Setup
+  - Dualsense:
+    - bluetooth setup:
+    - `chmod -R a+rwx /var/lib/bluetooth`
+    - `chown -R pi:root /var/lib/bluetooth`
+    - bluetoothctl
+      - `discoverable on pairable on agent on default-agent`
+    - pair
+      - `bluetoothctl`
+      - pair mac
+      - connect mac:address
+      - trust mac:address
+    - reboot and try again
+    - test
+      - apt-get install jstest-gtk
+      - jstest /dev/input/js0
+  - MotorHat
+    - Enable i2c
+      - raspi-config: interface
+    - test i2c motor hat and oled:
+      - `sudo apt-get install i2c-tools`
+      - `i2cdetect -y 1`
+      - 60, 70 and 3c
+    -
