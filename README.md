@@ -30,6 +30,7 @@
         - eyes
         - articulated?
           - 2 servo control
+          - https://github.com/sashimizakana/node-pi-servo
       - debug
         - ip
         - wifi setup
