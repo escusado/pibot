@@ -10,10 +10,12 @@ child.stdout.on('data', (data) => {
 
     if (jsTestOutput.indexOf('Axes') === 0) {
         const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
-        console.log('axes✚', axesString[0].replace(/: /g, ":").split(' '));
+        const axesParsed = axesString[0].replace(/: /g, ":").split(' ');
+        console.log('axes✚', axesParsed);
 
         const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
-        console.log('buttons🔴', buttonsString[0]);
+        const buttonsParsed = buttonsString[0].replace(/: /g, ":").split(' ');
+        console.log('buttons🔴', buttonsParsed);
     }
 });
 
