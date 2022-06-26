@@ -9,10 +9,8 @@ child.stdout.on('data', (data) => {
 
 
     if (jsTestOutput.indexOf('Axes') === 0) {
-        console.log('>>>🥦', jsTestOutput);
-
         const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
-        console.log('axes✚', axesString[0]);
+        console.log('axes✚', axesString[0].replace(/: /g, "").split(' '));
 
         const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
         console.log('buttons🔴', buttonsString[0]);
