@@ -12,7 +12,7 @@ child.stdout.on("data", (data) => {
     const axisParsed = {
       joyl: {
         x: parseInt(axesSliced[0].split(":")[1]),
-        y: parseInt(axesSliced[1].split(":")[1]),
+        y: parseInt(axesSliced[1].split(":")[1]) - 32767,
       },
     };
     console.log("axes✚", axisParsed);
