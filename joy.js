@@ -1,13 +1,13 @@
-const { exec } = require("child_process");
+const { spawn } = require('child_process');
 
-exec("jstest /dev/input/js0", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
+const child = spawn('jstest', ['/dev/input/js0']);
+
+
+child.stdout.on('data', (chunk) => {
+    // data from standard output is here as buffers
+    console.log('>>>🍕', data);
+});
+
+child.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
 });
