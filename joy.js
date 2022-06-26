@@ -14,7 +14,7 @@ child.stdout.on('data', (data) => {
         const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
         console.log('axes✚', axesString[0]);
 
-        const buttonsString = jsTestOutput.match(/<(Buttons:[0-9A-Z ]@[^13^|])/);
+        const buttonsString = jsTestOutput.match(/[^.?!]*(?<=[.?\s!])Buttons: (?:(?=[\s.?!])[^.?!]*(?:[.?!].*)?)?$/);
         console.log('buttons🔴', buttonsString);
     }
 });
