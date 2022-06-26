@@ -27,7 +27,10 @@ child.stdout.on("data", (data) => {
 
     const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
     const buttonsSliced = buttonsString[0].replace(/: /g, ":").split(" ");
-    console.log("buttons🔴", buttonsSliced);
+    const buttonsParsed = {
+      triangle: buttonsSliced[2] === "2:on",
+    };
+    console.log("buttons🔴", buttonsParsed);
   }
 });
 
