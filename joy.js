@@ -5,7 +5,7 @@ const child = spawn('jstest', ['/dev/input/js0']);
 
 child.stdout.on('data', (data) => {
     // get jstest-gtk output clean whitespace
-    var jsTestOutput = String(data).replace(/^\s+|\s+$|\s+(?=\s)/g, "").replace(/ /g, ':');
+    var jsTestOutput = String(data).replace(/^\s+|\s+$|\s+(?=\s)/g, "").replace(/ /g, ':').replace(/::/g, ':');
 
 
     if (jsTestOutput.indexOf('Axes') === 0) {
