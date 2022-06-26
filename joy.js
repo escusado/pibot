@@ -28,7 +28,19 @@ child.stdout.on("data", (data) => {
     const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
     const buttonsSliced = buttonsString[0].replace(/: /g, ":").split(" ");
     const buttonsParsed = {
-      triangle: buttonsSliced[2] === "2:on",
+      cross: buttonsSliced[0].indexOf("on") > 0,
+      circle: buttonsSliced[1].indexOf("on") > 0,
+      triangle: buttonsSliced[2].indexOf("on") > 0,
+      square: buttonsSliced[3].indexOf("on") > 0,
+      l1: buttonsSliced[4].indexOf("on") > 0,
+      r1: buttonsSliced[5].indexOf("on") > 0,
+      l2: buttonsSliced[6].indexOf("on") > 0,
+      r2: buttonsSliced[7].indexOf("on") > 0,
+      share: buttonsSliced[8].indexOf("on") > 0,
+      hamburger: buttonsSliced[9].indexOf("on") > 0,
+      ps: buttonsSliced[10].indexOf("on") > 0,
+      joyl: buttonsSliced[11].indexOf("on") > 0,
+      joyr: buttonsSliced[12].indexOf("on") > 0,
     };
     console.log("buttons🔴", buttonsParsed);
   }
