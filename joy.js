@@ -3,9 +3,13 @@ const { spawn } = require('child_process');
 const child = spawn('jstest', ['/dev/input/js0']);
 
 
-child.stdout.on('data', (chunk) => {
+child.stdout.on('data', (data) => {
     // data from standard output is here as buffers
-    console.log('>>>🍕', chunk);
+
+    var s = String(data);
+    // buffer = buffer.concat(s.split("\n"));
+
+    console.log('>>>🔴🍕', s);
 });
 
 child.on('close', (code) => {
