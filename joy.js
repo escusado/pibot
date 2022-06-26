@@ -4,15 +4,17 @@ const child = spawn('jstest', ['/dev/input/js0']);
 
 
 child.stdout.on('data', (data) => {
-    // data from standard output is here as buffers
-
+    // get jstest-gtk output clean whitespace
     var jsTestOutput = String(data).replace(/^\s+|\s+$|\s+(?=\s)/g, "");
 
 
     if (jsTestOutput.indexOf('Axes') === 0) {
         console.log('>>>🥦', jsTestOutput);
-        const colonSeparated = jsTestOutput.split(':');
+        const colonSeparated = jsTestOutput.split(' ').split(':');
         console.log('>>>🌍', colonSeparated);
+        const gamepadState = {
+            axes: []
+        }
     }
 });
 
