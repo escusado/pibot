@@ -11,11 +11,11 @@ child.stdout.on('data', (data) => {
     if (jsTestOutput.indexOf('Axes') === 0) {
         const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
         const axesParsed = axesString[0].replace(/: /g, ":").split(' ');
-        console.table('axes✚', axesParsed);
+        console.log('axes✚', axesParsed);
 
         const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
         const buttonsParsed = buttonsString[0].replace(/: /g, ":").split(' ');
-        console.table('buttons🔴', buttonsParsed);
+        console.log('buttons🔴', buttonsParsed);
     }
 });
 
