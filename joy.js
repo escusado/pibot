@@ -6,10 +6,14 @@ const child = spawn('jstest', ['/dev/input/js0']);
 child.stdout.on('data', (data) => {
     // data from standard output is here as buffers
 
-    var s = String(data);
-    // buffer = buffer.concat(s.split("\n"));
+    var jsTestOutput = String(data).replace(/^\s+|\s+$|\s+(?=\s)/g, "");
 
-    console.log('>>>🔴🍕', s);
+
+    if (jsTestOutput.indexOf('Axes') === 0) {
+        console.log('>>>🥦', jsTestOutput);
+        const colonSeparated = jsTestOutput.split(':');
+        console.log('>>>🌍', colonSeparated);
+    }
 });
 
 child.on('close', (code) => {
