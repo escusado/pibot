@@ -70,7 +70,7 @@ function stop() {
 }
 
 function forward() {
-    console.log('🥦');
+    console.log('⬆️');
     motorHat.dcs[0].setSpeedSync(25);
     motorHat.dcs[1].setSpeedSync(25);
     motorHat.dcs[2].setSpeedSync(25);
@@ -82,6 +82,7 @@ function forward() {
 };
 
 function reverse() {
+    console.log('⬇️');
     motorHat.dcs[0].setSpeedSync(25);
     motorHat.dcs[1].setSpeedSync(25);
     motorHat.dcs[2].setSpeedSync(25);
