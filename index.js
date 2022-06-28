@@ -71,6 +71,8 @@ function stop() {
 
 function forward() {
     console.log('⬆️');
+    oled.clearDisplay();
+    oled.writeString(font, 1, "Forward", 1, true);
     motorHat.dcs[0].setSpeedSync(25);
     motorHat.dcs[1].setSpeedSync(25);
     motorHat.dcs[2].setSpeedSync(25);
@@ -83,6 +85,8 @@ function forward() {
 
 function reverse() {
     console.log('⬇️');
+    oled.clearDisplay();
+    oled.writeString(font, 1, "Reverse", 1, true);
     motorHat.dcs[0].setSpeedSync(25);
     motorHat.dcs[1].setSpeedSync(25);
     motorHat.dcs[2].setSpeedSync(25);
