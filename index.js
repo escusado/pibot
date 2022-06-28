@@ -37,8 +37,9 @@ for (const name of Object.keys(nets)) {
 }
 
 console.log('🌍', results);
+var ssid = require('child_process').exec('iwgetid').match(/(?<=").*(?=")/)[0];
 oled.clearDisplay();
-oled.writeString(font, 1, `ip ${results.wlan0[0]}`, 1, true);
+oled.writeString(font, 1, `${ssid}\n${results.wlan0[0]}`, 1, true);
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
