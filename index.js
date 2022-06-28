@@ -37,7 +37,7 @@ for (const name of Object.keys(nets)) {
 }
 
 console.log('🌍', results);
-var ssid = require('child_process').exec('iwgetid');
+var ssid = require('child_process').execSync('iwgetid');
 console.log('📶', ssid);
 oled.clearDisplay();
 oled.writeString(font, 1, `${ssid}\n${results.wlan0[0]}`, 1, true);
