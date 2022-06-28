@@ -78,7 +78,7 @@ function forward() {
     motorHat.dcs[0].runSync('back');
     motorHat.dcs[1].runSync('fwd');
     motorHat.dcs[2].runSync('fwd');
-    motorHat.dcs[3].runSync('fwd');
+    motorHat.dcs[3].runSync('back');
 };
 
 function reverse() {
@@ -90,7 +90,7 @@ function reverse() {
     motorHat.dcs[0].runSync('fwd');
     motorHat.dcs[1].runSync('back');
     motorHat.dcs[2].runSync('back');
-    motorHat.dcs[3].runSync('back');
+    motorHat.dcs[3].runSync('fwd');
 };
 
 
