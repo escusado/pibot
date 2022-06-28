@@ -19,8 +19,6 @@ var oled = new oled(i2cBus, {
 oled.clearDisplay();
 oled.setCursor(1, 1);
 
-
-
 const nets = networkInterfaces();
 const results = {};
 
@@ -39,6 +37,8 @@ for (const name of Object.keys(nets)) {
 }
 
 console.log('🌍', results);
+oled.clearDisplay();
+oled.writeString(font, 1, `ip ${results.wlan[0]}`, 1, true);
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
