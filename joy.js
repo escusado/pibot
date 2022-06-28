@@ -90,5 +90,3 @@ child.stdout.on("data", (data) => {
 child.on("close", (code) => {
   console.log(`child process exited with code ${code}`);
 });
-
-module.exports = { dualsenseStore };
