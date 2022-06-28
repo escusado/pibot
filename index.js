@@ -147,6 +147,16 @@ dualsenseStore.pipe(select((state) => state.axes))
                 reverse();
                 return;
             }
+
+            if (data.dpad.x > 0) {
+                left();
+                return;
+            }
+
+            if (data.dpad.x < 0) {
+                right();
+                return;
+            }
         }
 
         stop();
