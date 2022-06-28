@@ -1,6 +1,6 @@
 console.log('🤖🍓');
 const { networkInterfaces } = require('os');
-const { select } = require("rxjs");
+const { select } = require("@ngneat/elf");
 
 var font = require('oled-font-5x7');
 var i2c = require('i2c-bus'),
