@@ -71,24 +71,24 @@ function stop() {
 
 function forward() {
     console.log('🥦');
-    motorHat.dcs[0].setSpeedSync(50);
-    motorHat.dcs[1].setSpeedSync(50);
-    motorHat.dcs[2].setSpeedSync(50);
-    motorHat.dcs[3].setSpeedSync(50);
-    motorHat.dcs[0].runSync('fwd');
+    motorHat.dcs[0].setSpeedSync(25);
+    motorHat.dcs[1].setSpeedSync(25);
+    motorHat.dcs[2].setSpeedSync(25);
+    motorHat.dcs[3].setSpeedSync(25);
+    motorHat.dcs[0].runSync('back');
     motorHat.dcs[1].runSync('fwd');
-    motorHat.dcs[2].runSync('fwd');
+    motorHat.dcs[2].runSync('back');
     motorHat.dcs[3].runSync('fwd');
 };
 
 function reverse() {
-    motorHat.dcs[0].setSpeedSync(50);
-    motorHat.dcs[1].setSpeedSync(50);
-    motorHat.dcs[2].setSpeedSync(50);
-    motorHat.dcs[3].setSpeedSync(50);
-    motorHat.dcs[0].runSync('back');
+    motorHat.dcs[0].setSpeedSync(25);
+    motorHat.dcs[1].setSpeedSync(25);
+    motorHat.dcs[2].setSpeedSync(25);
+    motorHat.dcs[3].setSpeedSync(25);
+    motorHat.dcs[0].runSync('fwd');
     motorHat.dcs[1].runSync('back');
-    motorHat.dcs[2].runSync('back');
+    motorHat.dcs[2].runSync('fwd');
     motorHat.dcs[3].runSync('back');
 };
 
