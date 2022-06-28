@@ -1,5 +1,5 @@
 const { spawn } = require("child_process");
-const { createStore } = require("elf");
+const { createStore } = require("@ngneat/elf");
 
 const child = spawn("jstest", ["/dev/input/js0"]);
 
