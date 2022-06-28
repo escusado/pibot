@@ -81,16 +81,25 @@ function forward() {
     motorHat.dcs[3].runSync('fwd');
 };
 
-let count = 0;
 function reverse() {
+    motorHat.dcs[0].setSpeedSync(50);
+    motorHat.dcs[1].setSpeedSync(50);
+    motorHat.dcs[2].setSpeedSync(50);
+    motorHat.dcs[3].setSpeedSync(50);
+    motorHat.dcs[0].runSync('back');
+    motorHat.dcs[1].runSync('back');
+    motorHat.dcs[2].runSync('back');
+    motorHat.dcs[3].runSync('back');
+};
+
+
+let count = 0;
+function left() {
     oled.clearDisplay();
     oled.writeString(font, 1, `el paso del robot ${count}`, 1, true);
     count++;
 };
 
-function left() {
-
-};
 
 function right() {
 
@@ -99,4 +108,16 @@ function right() {
 
 const { dualsenseStore } = require('./joy');
 dualsenseStore.pipe(select((state) => state.axes))
-    .subscribe((data) => { data && console.log('dpad', data.dpad) });
+    .subscribe((data) => {
+        if (data.dpad.y > 0) {
+            forward();
+            return;
+        }
+
+        if (data.dpad.y < 0) {
+            reverse();
+            return;
+        }
+
+        stop();
+    });
