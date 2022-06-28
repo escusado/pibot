@@ -100,16 +100,35 @@ function reverse() {
 };
 
 
-let count = 0;
 function left() {
+    console.log('⬅️');
     oled.clearDisplay();
-    oled.writeString(font, 1, `el paso del robot ${count}`, 1, true);
-    count++;
+    oled.setCursor(1, 1);
+    oled.writeString(font, 1, "Left", 1, true);
+    motorHat.dcs[0].setSpeedSync(25);
+    motorHat.dcs[1].setSpeedSync(25);
+    motorHat.dcs[2].setSpeedSync(25);
+    motorHat.dcs[3].setSpeedSync(25);
+    motorHat.dcs[0].runSync('fwd');
+    motorHat.dcs[1].runSync('fwd');
+    motorHat.dcs[2].runSync('fwd');
+    motorHat.dcs[3].runSync('fwd');
 };
 
 
 function right() {
-
+    console.log('➡️');
+    oled.clearDisplay();
+    oled.setCursor(1, 1);
+    oled.writeString(font, 1, "Right", 1, true);
+    motorHat.dcs[0].setSpeedSync(25);
+    motorHat.dcs[1].setSpeedSync(25);
+    motorHat.dcs[2].setSpeedSync(25);
+    motorHat.dcs[3].setSpeedSync(25);
+    motorHat.dcs[0].runSync('back');
+    motorHat.dcs[1].runSync('back');
+    motorHat.dcs[2].runSync('back');
+    motorHat.dcs[3].runSync('back');
 };
 
 
