@@ -9,6 +9,7 @@
     "@ngneat/elf": "^2.1.0",
     "motor-hat": "^2.0.10",
     "oled-font-5x7": "^1.0.3",
-    "oled-i2c-bus": "^1.0.12"
+    "oled-i2c-bus": "^1.0.12",
+    "rxjs": "^7.5.5"
   }
 }
