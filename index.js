@@ -109,14 +109,18 @@ function right() {
 const { dualsenseStore } = require('./joy');
 dualsenseStore.pipe(select((state) => state.axes))
     .subscribe((data) => {
-        if (data.dpad.y > 0) {
-            forward();
-            return;
-        }
 
-        if (data.dpad.y < 0) {
-            reverse();
-            return;
+        if (data && data.dpad) {
+
+            if (data.dpad.y > 0) {
+                forward();
+                return;
+            }
+
+            if (data.dpad.y < 0) {
+                reverse();
+                return;
+            }
         }
 
         stop();
