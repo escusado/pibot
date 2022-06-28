@@ -98,5 +98,5 @@ function right() {
 
 
 const { dualsenseStore } = require('./joy');
-dualsenseStore.pipe(select((state) => state.axes.dpad))
-    .subscribe((data) => { console.log('dpad', data) });
+dualsenseStore.pipe(select((state) => state.axes))
+    .subscribe(({ dpad }) => { console.log('dpad', dpad) });
