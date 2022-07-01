@@ -1,34 +1,29 @@
-const { spawn } = require("child_process");
-const { createStore } = require("@ngneat/elf");
+/**
+ * @module JstestDualsense
+ * @description Used to read the output of jstest-gtk commandline tool, this
+ * needs to be installed (read README setup (TBD)) and connected using bluetooth
+ * if the app detects is running on mac it will use the keyboard input instead
+ * using the fake data input that can be manipulated for dev purposes.
+ * It uses "elf.js" state manager library to report its current state, we use
+ * the `bind` method to add listeners to "axes" & "buttons" changes.
+ */
+
 const os = require("os");
+const { spawn } = require("child_process");
+const { createStore, select } = require("@ngneat/elf");
 
-let child;
-
+// Haven't found a way to read dualsense input in mac, using keyboard hack 4 now
+console.log("🐧/🍎OS: ", os.platform());
+let child = {};
 if (os.platform() === "linux") {
+  console.log("Using dualsense 🎮");
   child = spawn("jstest", ["/dev/input/js0"]);
 } else {
-  child = {
-    on: (event, cb) => {
-      process.stdin.setRawMode(true);
-      process.stdin.resume();
-      process.stdin.setEncoding("utf8");
-      process.stdin.on("data", function (key) {
-        if (key === "\u0003") {
-          process.exit();
-        }
-
-        switch (key) {
-          case "s":
-            cb(
-              "Axes: 0: 0 1: 0 2: 0 3: 0 4: 0 5: 0 6: 0 7: 0 Buttons: 0:off 1:off 2:off 3:off 4:off 5:off 6:off 7:off 8:off 9:off 10:off 11:off 12:off"
-            );
-            break;
-          default:
-            break;
-        }
-      });
-    },
-  };
+  console.log("Using dummy keyboard inputs ⌨️");
+  process.stdin.setRawMode(true);
+  process.stdin.resume();
+  process.stdin.setEncoding("utf8");
+  child["stdout"] = process.stdin;
 }
 
 class JstestDualsense {
@@ -62,17 +57,37 @@ class JstestDualsense {
   }
 
   setup() {
-    child.stdout.on("data", (data) => {
-      // get jstest-gtk output clean whitespace
-      var jsTestOutput = String(data)
-        .replace(/^\s+|\s+$|\s+(?=\s)/g, "")
-        .replace(/: /g, ":");
+    // keep objects outside to detect changes
+    const axes = {};
+    const buttons = {};
 
+    // catch button press or keydown events (note it will NOT detect keyup)
+    child.stdout.on("data", (data) => {
+      // detect Ctrl+c
+      if (data === "\u0003") {
+        process.exit();
+      }
+
+      let jsTestOutput = "";
+      if (os.platform() === "darwin") {
+        //write dummy input data for dev purposes
+        jsTestOutput = `Axes: 0: 0 1: -32767 2: 0 3: 0 4: 0 5: 0 6: 0 7: 0 Buttons: 0:${
+          data === "s" ? "on" : "off"
+        } 1:${
+          data === "a" ? "on" : "off"
+        } 2:off 3:off 4:off 5:off 6:off 7:off 8:off 9:off 10:off 11:off 12:off`;
+      } else {
+        // get jstest-gtk output
+        jsTestOutput = String(data);
+      }
+
+      // cleanup weird whitespace
+      jsTestOutput.replace(/^\s+|\s+$|\s+(?=\s)/g, "");
       if (jsTestOutput.indexOf("Axes") === 0) {
         //parse axes
         const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
-        const axesSliced = axesString[0].split(" ");
-        const axes = {
+        const axesSliced = axesString[0].replace(/: /g, ":").split(" ");
+        const newAxes = {
           joyl: {
             x: parseInt(axesSliced[0].split(":")[1]),
             y: parseInt(axesSliced[1].split(":")[1]) * -1,
@@ -90,7 +105,7 @@ class JstestDualsense {
         //parse buttons
         const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
         const buttonsSliced = buttonsString[0].replace(/: /g, ":").split(" ");
-        const buttons = {
+        const newButtons = {
           cross: buttonsSliced[0].indexOf("on") > 0,
           circle: buttonsSliced[1].indexOf("on") > 0,
           triangle: buttonsSliced[2].indexOf("on") > 0,
@@ -106,12 +121,21 @@ class JstestDualsense {
           joyr: buttonsSliced[12].indexOf("on") > 0,
         };
 
-        dualsenseStore.update(() => ({
-          axes,
-          buttons,
+        //update store api
+        this.store.update(() => ({
+          axes: Object.assign(axes, newAxes),
+          buttons: Object.assign(buttons, newButtons),
         }));
       }
     });
+  }
+
+  bind(eventName, cb) {
+    if (eventName === "axes" || eventName === "buttons") {
+      this.store.pipe(select((state) => state[eventName])).subscribe(cb);
+      return;
+    }
+    console.log("Event not supported: ", eventName);
   }
 }
 
