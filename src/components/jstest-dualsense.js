@@ -95,10 +95,10 @@ class JstestDualsense {
     };
 
     // //update store api
-    this.store.update(() => ({
-      axes: newAxes,
-      buttons: newButtons,
-    }));
+    // this.store.update(() => ({
+    //   axes: newAxes,
+    //   buttons: newButtons,
+    // }));
   }
 
   bind(eventName, cb) {
