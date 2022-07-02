@@ -6,7 +6,7 @@ class Pibot {
     console.log("🥧🤖: [Pibot booting...]");
     this.controller = new JstestDualsense();
     this.controller.setup();
-    this.controller.bind("jlx", (data) => console.log(">>>>>>> 🎮", data));
+    this.controller.bind("joylx", (data) => console.log(">>>>>>> 🎮", data));
     this.controller.bind("buttons", (data) => console.log(">>>>>>> ⭕️", data));
 
     this.rover = new Rover();

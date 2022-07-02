@@ -117,7 +117,7 @@ class JstestDualsense {
     }
     console.log(
       "Input not found: ",
-      eventName,
+      inputName,
       " use these instead: ",
       Object.keys(DEFAULT_BUTTONS)
     );
