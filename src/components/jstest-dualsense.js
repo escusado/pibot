@@ -41,9 +41,9 @@ class JstestDualsense {
 
   setup() {
     // react to program output
-    this.jstestOutputStore
-      .pipe(select((state) => state.output))
-      .subscribe(this.handleJstestOuput.bind(this));
+    // this.jstestOutputStore
+    //   .pipe(select((state) => state.output))
+    //   .subscribe(this.handleJstestOuput.bind(this));
 
     // catch button press or keydown events (note it will NOT detect keyup)
     spawn("jstest", ["/dev/input/js0"]).stdout.on("data", (output) =>
