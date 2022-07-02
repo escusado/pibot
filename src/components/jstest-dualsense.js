@@ -74,7 +74,7 @@ class JstestDualsense {
   handleJstestOuput(data) {
     if (data) {
       //parse axes
-      const axesString = data.match(/(?<=Axes: ).*(?= Buttons)/);
+      const axesString = data.match(/(?<=Axes:).*(?=Buttons)/);
       const axesSliced = axesString[0].split(" ");
       const newAxes = {
         joylx: parseInt(axesSliced[0].split(":")[1]),
@@ -88,7 +88,7 @@ class JstestDualsense {
       };
 
       // //parse buttons
-      const buttonsString = data.match(/(?<=Buttons: ).*$/);
+      const buttonsString = data.match(/(?<=Buttons:).*$/);
       const buttonsSliced = buttonsString[0].split(" ");
       const newButtons = {
         cross: buttonsSliced[0].indexOf("on") > 0,
