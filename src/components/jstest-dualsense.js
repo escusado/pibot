@@ -84,7 +84,7 @@ class JstestDualsense {
       };
 
       // //parse buttons
-      const buttonsString = jsTestOutput.match(/(?<=Buttons: ).*$/);
+      const buttonsString = data.match(/(?<=Buttons: ).*$/);
       const buttonsSliced = buttonsString[0].replace(/: /g, ":").split(" ");
       const newButtons = {
         cross: buttonsSliced[0].indexOf("on") > 0,
