@@ -49,7 +49,7 @@ class JstestDualsense {
     spawn("jstest", ["/dev/input/js0"]).stdout.on(
       "data",
       (output) =>
-        output.indexOf("Axes") === 0 &&
+        String(output).indexOf("Axes") === 0 &&
         this.jstestOutputStore.update(() => ({
           output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
         }))
