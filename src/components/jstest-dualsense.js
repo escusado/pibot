@@ -46,16 +46,17 @@ class JstestDualsense {
       .subscribe(this.handleJstestOuput.bind(this));
 
     // catch button press or keydown events (note it will NOT detect keyup)
-    spawn("jstest", ["/dev/input/js0"]).stdout.on("data", (output) =>
-      // wait for output that starts with "A"
-      this.jstestOutputStore.update(() => ({
-        output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
-      }))
+    spawn("jstest", ["/dev/input/js0"]).stdout.on(
+      "data",
+      (output) =>
+        output[0] === 13 && // wait for output that starts with "A"
+        this.jstestOutputStore.update(() => ({
+          output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
+        }))
     );
   }
 
   handleJstestOuput(jsTestOutput) {
-    k;
     //parse axes
     const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
     const axesSliced = axesString[0].replace(/: /g, ":").split(" ");
