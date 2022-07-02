@@ -48,7 +48,7 @@ class JstestDualsense {
     // catch button press or keydown events (note it will NOT detect keyup)
     spawn("jstest", ["/dev/input/js0"]).stdout.on(
       "data",
-      (output) => console.log(">>>>>>> output", output)
+      (output) => console.log(">>>>>>> output", output[0])
       // this.jstestOutputStore.update(() => ({
       //   output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
       // }))
