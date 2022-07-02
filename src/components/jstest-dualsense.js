@@ -40,23 +40,21 @@ class JstestDualsense {
   }
 
   setup() {
-    // catch button press or keydown events (note it will NOT detect keyup)
-    spawn("jstest", ["/dev/input/js0"]).stdout.on("data", (output) =>
-      output.indexOf("Axes") === 0
-        ? this.jstestOutputStore.update({
-            output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
-          })
-        : ""
-    );
-
     // react to program output
     this.jstestOutputStore
       .pipe(select((state) => state.output))
       .subscribe(this.handleJstestOuput.bind(this));
+
+    // catch button press or keydown events (note it will NOT detect keyup)
+    spawn("jstest", ["/dev/input/js0"]).stdout.on("data", (output) =>
+      this.jstestOutputStore.update({
+        output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
+      })
+    );
   }
 
   handleJstestOuput(data) {
-    console.log(">>>>>>> 🍕", data);
+    console.log(">>>>>>> 🍉", data);
     //parse axes
     // const axesString = jsTestOutput.match(/(?<=Axes: ).*(?= Buttons)/);
     // const axesSliced = axesString[0].replace(/: /g, ":").split(" ");
