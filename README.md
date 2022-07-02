@@ -71,26 +71,30 @@
     - solder to io pads
     - Dev mode usb power cable
 - Setup
-  - Dualsense:
-    - bluetooth setup:
-    - `chmod -R a+rwx /var/lib/bluetooth`
-    - `chown -R pi:root /var/lib/bluetooth`
-    - bluetoothctl
-      - `discoverable on pairable on agent on default-agent`
-    - pair
-      - `bluetoothctl`
-      - pair mac
-      - connect mac:address
-      - trust mac:address
-    - reboot and try again
-    - test
-      - apt-get install jstest-gtk
-      - jstest /dev/input/js0
-  - MotorHat
-    - Enable i2c
-      - raspi-config: interface
-    - test i2c motor hat and oled:
-      - `sudo apt-get install i2c-tools`
-      - `i2cdetect -y 1`
-      - 60, 70 and 3c
-    -
+  - Dev:
+    - Pi code-server:
+      - `mutagen forward create --name=code-server tcp:127.0.0.1:8080 <instance-ip>:tcp:127.0.0.1:8080`
+  - Bot:
+    - Dualsense:
+      - bluetooth setup:
+      - `chmod -R a+rwx /var/lib/bluetooth`
+      - `chown -R pi:root /var/lib/bluetooth`
+      - bluetoothctl
+        - `discoverable on pairable on agent on default-agent`
+      - pair
+        - `bluetoothctl`
+        - pair mac
+        - connect mac:address
+        - trust mac:address
+      - reboot and try again
+      - test
+        - apt-get install jstest-gtk
+        - jstest /dev/input/js0
+    - MotorHat
+      - Enable i2c
+        - raspi-config: interface
+      - test i2c motor hat and oled:
+        - `sudo apt-get install i2c-tools`
+        - `i2cdetect -y 1`
+        - 60, 70 and 3c
+      -

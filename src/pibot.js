@@ -1,5 +1,5 @@
-const JstestDualsense = require("./jstest-dualsense");
-const Rover = require("./rover");
+const JstestDualsense = require("./components/jstest-dualsense");
+const Rover = require("./components/rover");
 
 class Pibot {
   setup() {

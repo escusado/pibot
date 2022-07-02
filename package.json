@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "npx eslint src test",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "npx prettier src test --check",
+    "prettier:fix": "npm run prettier -- --write"
   },
   "dependencies": {
     "@ngneat/elf": "^2.1.0",
@@ -11,5 +15,10 @@
     "oled-font-5x7": "^1.0.3",
     "oled-i2c-bus": "^1.0.12",
     "rxjs": "^7.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   }
 }
