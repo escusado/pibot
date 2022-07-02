@@ -112,7 +112,7 @@ class JstestDualsense {
 
   bind(inputName, cb) {
     if (Object.keys(DEFAULT_BUTTONS).includes(inputName)) {
-      this.store.pipe(select((state) => state[eventName])).subscribe(cb);
+      this.store.pipe(select((state) => state[inputName])).subscribe(cb);
       return;
     }
     console.log(
