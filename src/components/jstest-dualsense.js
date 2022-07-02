@@ -5,6 +5,8 @@
  * as reported by Jstest the dualsense reads as:
  * Joystick (Wireless Controller) has 8 axes (X, Y, Z, Rx, Ry, Rz, Hat0X, Hat0Y)
  * and 13 buttons (BtnA, BtnB, BtnX, BtnY, BtnTL, BtnTR, BtnTL2, BtnTR2, BtnSelect, BtnStart, BtnMode, BtnThumbL, BtnThumbR).
+ * API is mapped using DEFAULT_BUTTONS definition, and the 'bind' method like:
+ *   jstestDualsenseInstance.bind('dpadx', (data) => console.log(data));
  */
 
 const os = require("os");
