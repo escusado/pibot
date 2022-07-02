@@ -53,7 +53,7 @@ class JstestDualsense {
   }
 
   setup() {
-    // react to program output
+    // react to program output changes only prevent spam from the controller
     this.jstestOutputStore
       .pipe(select((state) => state.output))
       .subscribe(this.handleJstestOuput.bind(this));
@@ -64,7 +64,9 @@ class JstestDualsense {
       (output) =>
         output[0] === 13 && // wait for output that starts with "A"
         this.jstestOutputStore.update(() => ({
-          output: String(output).replace(/^\s+|\s+$|\s+(?=\s)/g, ""),
+          output: String(output)
+            .replace(/^\s+|\s+$|\s+(?=\s)/g, "")
+            .replace(/: /g, ":"),
         }))
     );
   }
@@ -73,7 +75,7 @@ class JstestDualsense {
     if (data) {
       //parse axes
       const axesString = data.match(/(?<=Axes: ).*(?= Buttons)/);
-      const axesSliced = axesString[0].replace(/: /g, ":").split(" ");
+      const axesSliced = axesString[0].split(" ");
       const newAxes = {
         joylx: parseInt(axesSliced[0].split(":")[1]),
         joyly: parseInt(axesSliced[1].split(":")[1]) * -1,
@@ -87,7 +89,7 @@ class JstestDualsense {
 
       // //parse buttons
       const buttonsString = data.match(/(?<=Buttons: ).*$/);
-      const buttonsSliced = buttonsString[0].replace(/: /g, ":").split(" ");
+      const buttonsSliced = buttonsString[0].split(" ");
       const newButtons = {
         cross: buttonsSliced[0].indexOf("on") > 0,
         circle: buttonsSliced[1].indexOf("on") > 0,
