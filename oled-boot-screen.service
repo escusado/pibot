@@ -1,0 +1,13 @@
+[Unit]
+Description=Pibot Boot Oled Screen
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=toy
+ExecStart=cd /home/toy/code/pibot && npm run boot-screen
+
+[Install]
+WantedBy=multi-user.target
