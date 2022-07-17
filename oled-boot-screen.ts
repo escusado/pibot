@@ -42,10 +42,9 @@ oled.clearDisplay();
 oled.writeString(
   font,
   1,
-  `[-c°w°]-c Pibot@:
->${ssid?.[0].slice(0, 18)}
->${results.get("wlan0")[0]}
-what is my purpose?
+  `[-c°w°]c Pibot@:\n>${ssid?.[0].slice(0, 18)}\n>${
+    results.get("wlan0")[0]
+  }\nwhat is my purpose?
   `,
   1,
   true
