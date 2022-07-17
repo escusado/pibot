@@ -43,8 +43,9 @@ oled.writeString(
   font,
   1,
   `[-c°w°]-c Pibot@:
- ${ssid?.[0].slice(0, 15)}...
- ${results.get("wlan0")[0]}
+>${ssid?.[0].slice(0, 18)}
+>${results.get("wlan0")[0]}
+what is my purpose?
   `,
   1,
   true
