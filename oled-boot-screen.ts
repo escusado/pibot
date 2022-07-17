@@ -38,14 +38,14 @@ var ssid = String(require("child_process").execSync("iwgetid")).match(
   /(?<=").*(?=")/
 );
 console.log("📶", ssid?.[0]);
-console.log('>>>>>>> results.get("wlan0")[0]', results.get("wlan0")[0]);
 oled.clearDisplay();
 oled.writeString(
   font,
   1,
   `[-c°w°]-c Pibot@:
-  ${results.get("wlan0")[0]}
-  ${ssid?.[0].slice(0, 17)}...`,
+ ${ssid?.[0].slice(0, 15)}...
+ ${results.get("wlan0")[0]}
+  `,
   1,
   true
 );
