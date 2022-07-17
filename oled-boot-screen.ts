@@ -39,4 +39,13 @@ var ssid = String(require("child_process").execSync("iwgetid")).match(
 );
 console.log("📶", ssid?.[0]);
 oled.clearDisplay();
-oled.writeString(font, 1, `${ssid}\n${results.get("wlan0")[0]}`, 1, true);
+oled.writeString(
+  font,
+  1,
+  ` [ -c°▥°]-c \n
+  Pibot connected to:\n
+  ${ssid}\n
+  ${results.get("wlan0")[0]}`,
+  1,
+  true
+);
