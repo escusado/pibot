@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=toy
-ExecStart=cd /home/toy/code/pibot && npm run boot-screen
+ExecStart=cd /home/toy/code/pibot && npm run oled-boot-screen
 
 [Install]
 WantedBy=multi-user.target
