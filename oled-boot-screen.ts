@@ -42,7 +42,7 @@ oled.clearDisplay();
 oled.writeString(
   font,
   1,
-  ` [ -c°▥°]-c \n
+  ` [ -c°║║║°]-c \n
   Pibot connected to:\n
   ${ssid}\n
   ${results.get("wlan0")[0]}`,

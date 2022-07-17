@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=toy
-ExecStart=/home/toy/code/pibot/node_modules/.bin/ts-node oled-boot-screen.ts
+ExecStart=/home/toy/code/pibot/node_modules/.bin/ts-node /home/toy/code/pibot/oled-boot-screen.ts
 
 [Install]
 WantedBy=multi-user.target
