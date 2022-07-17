@@ -42,7 +42,9 @@ oled.clearDisplay();
 oled.writeString(
   font,
   1,
-  `[-c°w°]@:\n>${ssid?.[0].slice(0, 19)}\n>${results.get("wlan0")[0]}`,
+  `[-c°w°]@:\n>${ssid?.[0].slice(0, 20)}\n>${
+    results.get("wlan0")[0]
+  }\n[...what is my purpose?]`,
   1,
   true
 );
