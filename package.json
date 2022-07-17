@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "boot-screen": "node_modules/.bin/ts-node boot-screen.ts",
     "lint": "npx eslint src test",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src test --check",
@@ -14,11 +15,14 @@
     "motor-hat": "^2.0.10",
     "oled-font-5x7": "^1.0.3",
     "oled-i2c-bus": "^1.0.12",
-    "rxjs": "^7.5.5"
+    "rxjs": "^7.5.5",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
-    "eslint": "^8.19.0",
+    "@types/node": "^18.0.5",
+    "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1"
   }
 }
