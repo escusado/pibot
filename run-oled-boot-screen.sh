@@ -1,3 +1,4 @@
 #!/bin/bash
 
-ExecStart=/home/toy/code/pibot/node_modules/.bin/ts-node /home/toy/code/pibot/oled-boot-screen.ts
+cd /home/toy/code/pibot/
+npm run oled-boot-screen
