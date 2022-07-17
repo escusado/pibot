@@ -38,6 +38,7 @@ var ssid = String(require("child_process").execSync("iwgetid")).match(
   /(?<=").*(?=")/
 );
 console.log("📶", ssid?.[0]);
+console.log('>>>>>>> results.get("wlan0")', results.get("wlan0"));
 oled.clearDisplay();
 oled.writeString(
   font,
