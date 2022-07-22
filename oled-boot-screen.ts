@@ -38,11 +38,11 @@ oledScreen.setCursor(1, 1);
 // oledScreen.writeString(
 //   font,
 //   1,
-//   `[-c°w°]-c\n>${ssid?.[0].slice(0, 19)}\n>${
-//     results.get("wlan0")[0]
-//   }\nwhat is my purpose?`,
+// `[-c°w°]-c\n>${ssid?.[0].slice(0, 19)}\n>${
+//   results.get("wlan0")[0]
+// }\nwhat is my purpose?`,
 //   1,
 //   true
 // );
 
-oledScreen.writeString(font, 1, `what is my purpose?`, 1, true);
+oledScreen.writeString(font, 1, `${results.get("wlan0")[0]}`, 1, true);
