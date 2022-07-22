@@ -1,4 +1,4 @@
-import { networkInterfaces } from "os";
+const networkInterfaces = require("os");
 
 const font = require("oled-font-5x7");
 const i2c = require("i2c-bus");
