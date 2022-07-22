@@ -44,4 +44,10 @@ oledScreen.setCursor(1, 1);
 //   true
 // );
 
-oledScreen.writeString(font, 1, `${results.get("wlan0")[0]}`, 1, true);
+oledScreen.writeString(
+  font,
+  1,
+  `${ssid?.[0]}: ${results.get("wlan0")[0]}`,
+  1,
+  true
+);
