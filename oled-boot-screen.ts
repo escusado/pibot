@@ -33,6 +33,7 @@ const ssid = String(require("child_process").execSync("iwgetid")).match(
 );
 
 oledScreen.clearDisplay();
+oledScreen.turnOnDisplay();
 oledScreen.setCursor(1, 1);
 oledScreen.writeString(font, 1, `[-c°w°]-c Pibot v1`, 1, true);
 setTimeout(() => {
