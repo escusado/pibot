@@ -1,5 +1,4 @@
-const networkInterfaces = require("os");
-
+const { networkInterfaces } = require("os");
 const font = require("oled-font-5x7");
 const i2c = require("i2c-bus");
 const i2cBus = i2c.openSync(1);
