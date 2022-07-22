@@ -35,14 +35,13 @@ const ssid = String(require("child_process").execSync("iwgetid")).match(
 oledScreen.clearDisplay();
 oledScreen.setCursor(1, 1);
 oledScreen.writeString(font, 1, `[-c°w°]-c Pibot v1`, 1, true);
-setTimeout(
-  () =>
-    oledScreen.writeString(
-      font,
-      1,
-      `${ssid?.[0]}: ${results.get("wlan0")[0]}`,
-      1,
-      true
-    ),
-  1000
-);
+setTimeout(() => {
+  oledScreen.clearDisplay();
+  oledScreen.writeString(
+    font,
+    1,
+    `${ssid?.[0]}: ${results.get("wlan0")[0]}`,
+    1,
+    true
+  );
+}, 1000);
