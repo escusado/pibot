@@ -63,6 +63,8 @@
     - cable mod
     - pi io pins
     - stemmaqt, quick
+    - ctontab -e:
+      - `@reboot /home/toy/code/pibot/run-oled-boot-screen.sh &`
   - MotorHat
     - M1-4 all DC motors direct connection
   - Power
