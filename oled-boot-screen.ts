@@ -36,6 +36,7 @@ oledScreen.clearDisplay();
 oledScreen.setCursor(1, 1);
 oledScreen.writeString(font, 1, `[-c°w°]-c Pibot v1`, 1, true);
 setTimeout(() => {
+  oledScreen.setCursor(1, 1);
   oledScreen.clearDisplay();
   oledScreen.writeString(
     font,
@@ -44,4 +45,4 @@ setTimeout(() => {
     1,
     true
   );
-}, 1000);
+}, 2000);
