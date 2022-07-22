@@ -51,5 +51,5 @@ try {
     );
   }, 2000);
 } catch (e) {
-  oledScreen.writeString(font, 1, `Error`, 1, true);
+  oledScreen.writeString(font, 1, `Error: ${(e as Error).message}`, 1, true);
 }
