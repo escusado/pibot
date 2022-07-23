@@ -14,32 +14,32 @@ oledScreen.clearDisplay();
 oledScreen.turnOnDisplay();
 oledScreen.setCursor(1, 1);
 
-try {
-  const nets = networkInterfaces();
-  const results = new Map();
+const tryRunning = () => {
+  try {
+    const nets = networkInterfaces();
+    const results = new Map();
 
-  for (const name of Object.keys(nets)) {
-    const netName = nets[name];
-    if (netName) {
-      for (const net of netName) {
-        const familyV4Value = typeof net.family === "string" ? "IPv4" : 4;
-        if (net.family === familyV4Value && !net.internal) {
-          if (!results.has(name)) {
-            results.set(name, []);
+    for (const name of Object.keys(nets)) {
+      const netName = nets[name];
+      if (netName) {
+        for (const net of netName) {
+          const familyV4Value = typeof net.family === "string" ? "IPv4" : 4;
+          if (net.family === familyV4Value && !net.internal) {
+            if (!results.has(name)) {
+              results.set(name, []);
+            }
+            results.set(name, [...results.get(name), net.address]);
           }
-          results.set(name, [...results.get(name), net.address]);
         }
       }
     }
-  }
 
-  const ssid = String(require("child_process").execSync("iwgetid")).match(
-    /(?<=").*(?=")/
-  );
+    const ssid = String(require("child_process").execSync("iwgetid")).match(
+      /(?<=").*(?=")/
+    );
 
-  oledScreen.writeString(font, 1, `[-c°w°]-c Pibot v1`, 1, true);
+    oledScreen.writeString(font, 1, `[-c°w°]-c Pibot v1`, 1, true);
 
-  setTimeout(() => {
     oledScreen.setCursor(1, 1);
     oledScreen.clearDisplay();
     oledScreen.writeString(
@@ -49,7 +49,10 @@ try {
       1,
       true
     );
-  }, 2000);
-} catch (e) {
-  oledScreen.writeString(font, 1, `Error: ${(e as Error).message}`, 1, true);
-}
+  } catch (e) {
+    oledScreen.writeString(font, 1, `Error: ${(e as Error).message}`, 1, true);
+    setTimeout(() => {
+      tryRunning();
+    }, 3000);
+  }
+};
