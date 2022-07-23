@@ -40,19 +40,18 @@ const tryRunning = () => {
 
     oledScreen.writeString(font, 1, `[-c°w°]-c Pibot v1`, 1, true);
 
-    oledScreen.setCursor(1, 1);
-    oledScreen.clearDisplay();
-    oledScreen.writeString(
-      font,
-      1,
-      `${ssid?.[0]}: ${results.get("wlan0")[0]}`,
-      1,
-      true
-    );
+    setTimeout(() => {
+      oledScreen.setCursor(1, 1);
+      oledScreen.clearDisplay();
+      oledScreen.writeString(
+        font,
+        1,
+        `${ssid?.[0]}: ${results.get("wlan0")[0]}`,
+        1,
+        true
+      );
+    }, 2000);
   } catch (e) {
     oledScreen.writeString(font, 1, `Error: ${(e as Error).message}`, 1, true);
-    setTimeout(() => {
-      tryRunning();
-    }, 3000);
   }
 };
