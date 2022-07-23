@@ -53,5 +53,8 @@ const tryRunning = () => {
     }, 2000);
   } catch (e) {
     oledScreen.writeString(font, 1, `Error: ${(e as Error).message}`, 1, true);
+    setTimeout(() => tryRunning(), 2000);
   }
 };
+
+tryRunning();
