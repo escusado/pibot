@@ -14,6 +14,7 @@ oledScreen.clearDisplay();
 oledScreen.turnOnDisplay();
 oledScreen.setCursor(1, 1);
 
+let connectRetryCount = 0;
 const tryRunning = () => {
   try {
     const nets = networkInterfaces();
@@ -50,7 +51,13 @@ const tryRunning = () => {
       true
     );
   } catch (e) {
-    oledScreen.writeString(font, 1, `Error: ${(e as Error).message}`, 1, true);
+    oledScreen.writeString(
+      font,
+      1,
+      `${++connectRetryCount} Error: ${(e as Error).message}`,
+      1,
+      true
+    );
     setTimeout(() => {
       tryRunning();
     }, 3000);
