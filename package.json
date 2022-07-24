@@ -2,8 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "authors":["nox","escusado","javierbyte"],
   "scripts": {
-    "start": "node index.js",
+    "start": "./node_modules/.bin/ts-node index.js",
     "lint": "npx eslint src test",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src test --check",
