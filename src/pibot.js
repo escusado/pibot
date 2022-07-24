@@ -1,6 +1,7 @@
 // const JstestDualsense = require("./components/jstest-dualsense");
 
 const Rover = require("./components/rover");
+const Arm = require("./components/arm");
 
 class Pibot {
   setup() {
@@ -32,8 +33,17 @@ class Pibot {
     // this.controller.bind("ps", (data) => console.log("ps", data));
 
     this.rover = new Rover();
-    this.rover.forward();
-    setTimeout(() => this.rover.stop(), 5000);
+    // this.rover.forward();
+
+    this.arm = new Arm();
+    // setTimeout(() => this.rover.stop(), 100);
+
+    // for (let i = 0; i < 50; i++) {
+    //   setTimeout(() => {
+    //     this.rover.forward(i);
+    //   }, 1000 * i);
+    // }
+    this.arm.tilt(50);
     console.log("🥧🤖: [what is my purpose?]");
   }
 }

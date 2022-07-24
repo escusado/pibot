@@ -2,7 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "authors":["nox","escusado","javierbyte"],
+  "authors": [
+    "nox",
+    "escusado",
+    "javierbyte"
+  ],
   "scripts": {
     "start": "./node_modules/.bin/ts-node index.js",
     "lint": "npx eslint src test",
@@ -15,6 +19,7 @@
     "motor-hat": "^2.0.10",
     "oled-font-5x7": "^1.0.3",
     "oled-i2c-bus": "^1.0.12",
+    "pi-servo": "^1.0.2",
     "rxjs": "^7.5.5",
     "ts-node": "^10.9.1"
   },
