@@ -13,7 +13,21 @@ oledScreen.clearDisplay();
 oledScreen.turnOnDisplay();
 oledScreen.setCursor(1, 1);
 
-// module.exports = OledScreen;
+const maxHorizontalChars = 21;
+const maxLines = 4;
+const messages = [];
+
 module.exports = {
-  log: (message) => oledScreen.writeString(font, 1, message, 1, true),
+  log: (message) => {
+    messages.push(message);
+    if (messages.length > maxLines) {
+      messages.shift();
+    }
+    oledScreen.clearDisplay();
+    oledScreen.setCursor(1, 1);
+    messages.forEach((message, index) => {
+      oledScreen.setCursor(1, index * 8);
+      oledScreen.writeString(font, 1, message, 1, true);
+    });
+  },
 };
