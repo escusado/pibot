@@ -13,13 +13,12 @@ class Pibot {
     this.rover = new Rover();
     this.controller.setup();
 
-    // this.controller.bind("joylx", (data) => console.log("joylx ", data));
+    this.controller.bind("joylx", (data) => OledScreen.log(`joylx ${data}`));
     // this.controller.bind("joyly", (data) => console.log("joyly ", data));
     // this.controller.bind("joyrx", (data) => console.log("joyrx ", data));
     // this.controller.bind("joyry", (data) => console.log("joyry ", data));
     this.controller.bind("dpadx", (data) => {
       clearTimeout(this.inputResetTimeout);
-
       this.inputResetTimeout = setTimeout(() => {
         if (data > 0) {
           this.rover.right(10);
@@ -28,11 +27,11 @@ class Pibot {
         }
         setTimeout(() => this.rover.stop(), 500);
       }, 100);
+      OledScreen.log(`dpadx: ${data}`);
     });
 
     this.controller.bind("dpady", (data) => {
       clearTimeout(this.inputResetTimeout);
-
       this.inputResetTimeout = setTimeout(() => {
         if (data > 0) {
           this.rover.forward(10);
@@ -41,6 +40,7 @@ class Pibot {
         }
         setTimeout(() => this.rover.stop(), 500);
       }, 100);
+      OledScreen.log(`dpady: ${data}`);
     });
 
     // this.controller.bind("circle", (data) => console.log(">>>>>>> ⭕️", data));

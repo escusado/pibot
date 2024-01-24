@@ -73,7 +73,7 @@ class JstestDualsense {
 
   handleJstestOuput(data) {
     if (data) {
-      //parse axes
+      // parse axes
       const axesString = data.match(/(?<=Axes:).*(?=Buttons)/);
       const axesSliced = axesString[0].split(" ");
       const newAxes = {
@@ -87,7 +87,7 @@ class JstestDualsense {
         dpady: parseInt(axesSliced[7].split(":")[1]) * -1,
       };
 
-      // //parse buttons
+      // parse buttons
       const buttonsString = data.match(/(?<=Buttons:).*$/);
       const buttonsSliced = buttonsString[0].split(" ");
       const newButtons = {
@@ -106,7 +106,7 @@ class JstestDualsense {
         ps: buttonsSliced[10].indexOf("on") > 0,
       };
 
-      // //update store api
+      // update store api
       this.store.update(() => ({
         ...newAxes,
         ...newButtons,
